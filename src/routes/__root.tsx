@@ -77,19 +77,34 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Andaman GPS | ระบบติดตามรถ GPS และบริหารจัดการยานพาหนะครบวงจร" },
+      {
+        name: "description",
+        content:
+          "ผู้เชี่ยวชาญด้าน GPS Tracking, MDVR และ Fleet Management ติดตามรถแบบเรียลไทม์ พร้อมทีมติดตั้งทั่วประเทศ",
+      },
+      { name: "author", content: "Andaman GPS" },
+      {
+        name: "keywords",
+        content:
+          "GPS Tracking, ระบบติดตามรถ, GPS รถบรรทุก, Fleet Management, MDVR, กล้องติดรถออนไลน์, GPS ภูเก็ต",
+      },
+      { property: "og:title", content: "Andaman GPS | ระบบติดตามรถ GPS ครบวงจร" },
+      {
+        property: "og:description",
+        content:
+          "โซลูชัน GPS Tracking, MDVR และ Fleet Management สำหรับองค์กรและธุรกิจขนส่งทั่วประเทศ",
+      },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
+      { rel: "stylesheet", href: appCss },
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: appCss,
+        href: "https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;600;700;800&family=Kanit:wght@600;700;800&family=Inter:wght@400;500;600&display=swap",
       },
     ],
   }),
