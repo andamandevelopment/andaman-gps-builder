@@ -30,12 +30,17 @@ import {
   Play,
 } from "lucide-react";
 
-import logoAsset from "@/assets/andaman-gps-logo.png.asset.json";
+import logoSvg from "@/assets/logo.svg";
 import heroDashboard from "@/assets/hero-dashboard.jpg";
 import featureTracking from "@/assets/feature-tracking.jpg";
 import featureMdvr from "@/assets/feature-mdvr.jpg";
 import featureFleet from "@/assets/feature-fleet.jpg";
-import mobileApp from "@/assets/mobile-app.jpg";
+const APP_SCREENSHOTS = [
+  "https://play-lh.googleusercontent.com/pyqAgCkyb1jXQz4sTtObFWrmvX_gCtU2i-MUy-qembGw4Q-HAe6T9ClTmNa6imF1LQ5ANS5OJ1z3LkFOam1rRzg",
+  "https://play-lh.googleusercontent.com/IkHhdMngx7aJt-txTWqorOsDumo1nuZKVbyTNhpg1Z22tFeV8MU1OW_vT68OQthBxIG_88GcWtB76DCdTTvEmg",
+  "https://play-lh.googleusercontent.com/fCciHlhPHfC7HrwHDFzVDddEImzT1oL7YzzeBPDfPNK3Bc0hMjfkuzgxjz50v6KMhCQRVZKvf9AHKvMMvflH",
+  "https://play-lh.googleusercontent.com/29njRIWPbhzWUzUmPvVt6gUp4Xe6VouVK27B-HQzZ3w5jSRhSEI73JYzYT4YHLfb2OOVp1kgmKNLYI6H2sju",
+];
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -80,6 +85,7 @@ const NAV = [
   { label: "หน้าแรก", href: "#home" },
   { label: "เกี่ยวกับเรา", href: "#about" },
   { label: "บริการ", href: "#services" },
+  { label: "สินค้า", href: "#products" },
   { label: "ฟีเจอร์", href: "#features" },
   { label: "แอปพลิเคชัน", href: "#app" },
   { label: "ลูกค้าของเรา", href: "#customers" },
@@ -93,9 +99,10 @@ function Index() {
       <Header />
       <main>
         <Hero />
-        <Customers />
+        {/* <Customers /> */}
         <About />
         <Services />
+        <Products />
         <Features />
         <MobileAppSection />
         <WhyUs />
@@ -129,7 +136,7 @@ function Header() {
     >
       <div className="mx-auto max-w-[1440px] px-6 lg:px-10 h-20 flex items-center justify-between">
         <a href="#home" className="flex items-center gap-2 shrink-0">
-          <img src={logoAsset.url} alt="Andaman GPS" className="h-10 w-auto" />
+          <img src={logoSvg} alt="Andaman GPS" className="h-10 w-auto" />
         </a>
         <nav className="hidden lg:flex items-center gap-7">
           {NAV.map((n) => (
@@ -431,6 +438,100 @@ function Services() {
   );
 }
 
+/* ---------- Products ---------- */
+function Products() {
+  const products = [
+    {
+      name: "GPS VT120",
+      alias: "iStartek VT120-L",
+      tag: "ยอดนิยมสำหรับรถใช้งานทั่วไป",
+      icon: MapPin,
+      description:
+        "อุปกรณ์ติดตามรถที่เน้นความเสถียร ใช้งานง่าย เหมาะสำหรับรถยนต์ รถกระบะ และรถขนส่งที่ต้องการข้อมูลตำแหน่งแบบเรียลไทม์",
+      specs: ["ติดตามตำแหน่งเรียลไทม์", "แจ้งเตือนการเคลื่อนที่", "รายงานย้อนหลัง", "ติดตั้งได้กับรถหลายประเภท"],
+      accent: "bg-gradient-brand",
+    },
+    {
+      name: "Meitrack T399L",
+      alias: "GPS Tracker",
+      tag: "รุ่นสำหรับงานฟลีทและองค์กร",
+      icon: Truck,
+      description:
+        "โซลูชันติดตามยานพาหนะที่เหมาะกับงานบริหารจัดการฟลีท รองรับการติดตามพิกัด การแจ้งเตือน และการดูแลรถหลายคันพร้อมกัน",
+      specs: ["รองรับงานฟลีท", "แจ้งเตือนอัจฉริยะ", "เชื่อมต่อระบบติดตาม", "เหมาะกับรถเชิงพาณิชย์"],
+      accent: "bg-primary",
+    },
+    {
+      name: "iStartek VT100-L",
+      alias: "Compact GPS Tracker",
+      tag: "ขนาดกะทัดรัดสำหรับติดตั้งแอบซ่อน",
+      icon: Cpu,
+      description:
+        "ตัวเลือกที่เหมาะกับงานติดตั้งที่ต้องการความเรียบร้อยและประหยัดพื้นที่ ให้ข้อมูลตำแหน่งและการใช้งานรถอย่างแม่นยำ",
+      specs: ["ตัวเครื่องขนาดกะทัดรัด", "ติดตั้งง่าย", "ติดตามได้ต่อเนื่อง", "เหมาะกับรถส่วนบุคคลและงานบริการ"],
+      accent: "bg-gradient-cta",
+    },
+  ];
+
+  return (
+    <section id="products" className="py-28 lg:py-36 bg-surface">
+      <div className="mx-auto max-w-[1440px] px-6 lg:px-10">
+        <div className="max-w-2xl mx-auto text-center">
+          <span className="text-sm font-semibold text-accent uppercase tracking-widest">
+            สินค้า GPS ของเรา
+          </span>
+          <h2 className="mt-3 text-3xl md:text-5xl font-extrabold">
+            อุปกรณ์ติดตามรถที่คัดมาให้เหมาะกับงานจริง
+          </h2>
+          <p className="mt-4 text-muted-foreground leading-relaxed">
+            เลือกอุปกรณ์ตามลักษณะการใช้งาน ตั้งแต่รถส่วนบุคคล รถขนส่ง ไปจนถึงงานฟลีทเชิงพาณิชย์
+          </p>
+        </div>
+
+        <div className="mt-14 grid lg:grid-cols-3 gap-6">
+          {products.map((product) => (
+            <article
+              key={product.name}
+              className="group overflow-hidden rounded-3xl border border-border bg-white shadow-card transition-all duration-300 hover:-translate-y-2 hover:shadow-glass"
+            >
+              <div className={`p-8 text-white ${product.accent}`}>
+                <div className="flex items-center justify-between gap-4">
+                  <div className="h-14 w-14 rounded-2xl bg-white/15 backdrop-blur grid place-items-center">
+                    <product.icon className="h-7 w-7" />
+                  </div>
+                  <span className="rounded-full bg-white/15 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-white/90">
+                    {product.tag}
+                  </span>
+                </div>
+                <h3 className="mt-8 text-2xl font-extrabold leading-tight">{product.name}</h3>
+                <p className="mt-2 text-sm text-white/80">{product.alias}</p>
+              </div>
+
+              <div className="p-8">
+                <p className="text-muted-foreground leading-relaxed">{product.description}</p>
+                <ul className="mt-6 space-y-3">
+                  {product.specs.map((spec) => (
+                    <li key={spec} className="flex items-start gap-3 text-sm text-foreground">
+                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
+                      <span>{spec}</span>
+                    </li>
+                  ))}
+                </ul>
+                <a
+                  href="#contact"
+                  className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-primary group-hover:text-accent transition"
+                >
+                  ขอรายละเอียดสินค้า <ArrowRight className="h-4 w-4" />
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 /* ---------- Features ---------- */
 function Features() {
   const features = [
@@ -455,7 +556,7 @@ function Features() {
   ];
   const bullets = [
     { icon: History, t: "ดูย้อนหลังได้ 365 วัน" },
-    { icon: Bell, t: "แจ้งเตือนผ่าน LINE & Mobile App" },
+    { icon: Bell, t: "แจ้งเตือนผ่าน Telegram & Mobile App" },
     { icon: Users, t: "รองรับหลายสาขา หลายผู้ใช้งาน" },
     { icon: Globe2, t: "ใช้งานได้ทั้ง Web และ Mobile" },
   ];
@@ -483,7 +584,7 @@ function Features() {
                 <h3 className="mt-6 text-3xl md:text-4xl font-extrabold">{f.title}</h3>
                 <p className="mt-4 text-muted-foreground leading-relaxed text-lg">{f.desc}</p>
                 <ul className="mt-6 space-y-3">
-                  {["ใช้งานง่าย", "เชื่อมต่อ API ได้", "ปลอดภัยระดับองค์กร"].map((b) => (
+                  {["ใช้งานง่าย",   "ปลอดภัยระดับองค์กร" , "จัดทำรายงานให้เหมาะสมกับองค์กร"].map((b) => (
                     <li key={b} className="flex items-center gap-3 text-sm">
                       <CheckCircle2 className="h-5 w-5 text-accent" /> {b}
                     </li>
@@ -552,14 +653,14 @@ function MobileAppSection() {
             ))}
           </div>
           <div className="mt-8 flex flex-wrap gap-3">
-            <a href="#" className="inline-flex items-center gap-3 rounded-2xl bg-black/40 glass px-5 py-3 hover:bg-black/60 transition">
+            <a href="https://apps.apple.com/us/app/%E0%B8%AD-%E0%B8%99%E0%B8%94%E0%B8%B2%E0%B8%A1-%E0%B8%99-%E0%B9%81%E0%B8%97%E0%B8%A3-%E0%B8%84%E0%B8%81-%E0%B8%87/id1513508217" className="inline-flex items-center gap-3 rounded-2xl bg-black/40 glass px-5 py-3 hover:bg-black/60 transition">
               <Apple className="h-7 w-7" />
               <div>
                 <div className="text-[10px] text-white/70">Download on the</div>
                 <div className="text-sm font-bold">App Store</div>
               </div>
             </a>
-            <a href="#" className="inline-flex items-center gap-3 rounded-2xl bg-black/40 glass px-5 py-3 hover:bg-black/60 transition">
+            <a href="https://play.google.com/store/apps/details?id=at.andamantracking.dev" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 rounded-2xl bg-black/40 glass px-5 py-3 hover:bg-black/60 transition">
               <Play className="h-7 w-7" />
               <div>
                 <div className="text-[10px] text-white/70">GET IT ON</div>
@@ -568,16 +669,52 @@ function MobileAppSection() {
             </a>
           </div>
         </div>
-        <div className="relative">
-          <img
-            src={mobileApp}
-            alt="Andaman GPS Mobile App"
-            loading="lazy"
-            width={1024}
-            height={1024}
-            className="relative z-10 rounded-3xl shadow-glass animate-float"
-          />
-          <div className="absolute -inset-10 bg-brand-orange/20 blur-3xl rounded-full" />
+        <div className="relative flex justify-center items-end gap-3 lg:gap-5 min-h-[520px]">
+          <div className="absolute -inset-10 bg-brand-orange/20 blur-3xl rounded-full pointer-events-none" />
+          {/* Left phone */}
+          <div className="relative z-10 -rotate-6 translate-y-6 opacity-90 hidden sm:block">
+            <div className="rounded-[2rem] overflow-hidden border-2 border-white/20 shadow-glass w-28 lg:w-36">
+              <img
+                src={`${APP_SCREENSHOTS[3]}=w270-h585-rw`}
+                alt="Andaman GPS App Screenshot"
+                loading="lazy"
+                className="w-full h-auto block"
+              />
+            </div>
+          </div>
+          {/* Center phone */}
+          <div className="relative z-20 animate-float">
+            <div className="rounded-[2.5rem] overflow-hidden border-2 border-white/30 shadow-glass w-40 lg:w-52">
+              <img
+                src={`${APP_SCREENSHOTS[0]}=w270-h585-rw`}
+                alt="Andaman GPS App - Live Tracking"
+                loading="lazy"
+                className="w-full h-auto block"
+              />
+            </div>
+          </div>
+          {/* Right phone */}
+          <div className="relative z-10 rotate-6 translate-y-6 opacity-90">
+            <div className="rounded-[2rem] overflow-hidden border-2 border-white/20 shadow-glass w-28 lg:w-36">
+              <img
+                src={`${APP_SCREENSHOTS[1]}=w270-h585-rw`}
+                alt="Andaman GPS App Screenshot"
+                loading="lazy"
+                className="w-full h-auto block"
+              />
+            </div>
+          </div>
+          {/* Far right phone */}
+          <div className="relative z-10 rotate-12 translate-y-12 opacity-70 hidden lg:block">
+            <div className="rounded-[2rem] overflow-hidden border-2 border-white/20 shadow-glass w-28">
+              <img
+                src={`${APP_SCREENSHOTS[2]}=w270-h585-rw`}
+                alt="Andaman GPS App Screenshot"
+                loading="lazy"
+                className="w-full h-auto block"
+              />
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -784,8 +921,8 @@ function Footer() {
     <footer id="contact" className="bg-navy-deep text-white pt-20 pb-10">
       <div className="mx-auto max-w-[1440px] px-6 lg:px-10 grid lg:grid-cols-4 gap-12">
         <div>
-          <div className="bg-white inline-block rounded-xl px-3 py-2">
-            <img src={logoAsset.url} alt="Andaman GPS" className="h-10 w-auto" />
+          <div className="  inline-block rounded-xl px-3 py-2">
+            <img src={logoSvg} alt="Andaman GPS" className="h-10 w-auto" />
           </div>
           <p className="mt-5 text-sm text-white/70 leading-relaxed">
             บริษัท อันดามัน แทร็คกิ้ง จำกัด ผู้ให้บริการระบบติดตามยานพาหนะและ
@@ -798,6 +935,8 @@ function Footer() {
             <li><a href="#about" className="hover:text-accent">เกี่ยวกับเรา</a></li>
             <li><a href="#services" className="hover:text-accent">บริการ</a></li>
             <li><a href="#blog" className="hover:text-accent">บทความ</a></li>
+            <li><a href="/business-policy" className="hover:text-accent">นโยบายทางธุรกิจ</a></li>
+            <li><a href="/privacy-policy" className="hover:text-accent">นโยบายความเป็นส่วนตัว</a></li>
             <li><a href="#contact" className="hover:text-accent">ติดต่อเรา</a></li>
           </ul>
         </div>

@@ -1,0 +1,12 @@
+services:
+  web:
+    image: andaman-gps
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: andaman-gps
+    ports:
+      - "3000:80"
+    environment:
+      NODE_ENV: production
+    restart: unless-stopped
