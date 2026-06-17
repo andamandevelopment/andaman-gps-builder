@@ -4,9 +4,13 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        VITE_API_URL: ${VITE_API_URL:-}
+        VITE_BETTER_AUTH_URL: ${VITE_BETTER_AUTH_URL:-}
     container_name: andaman-gps
     ports:
-      - "3000:3000"
+      - "${APP_PORT:-3058}:3058"
     environment:
       NODE_ENV: production
+      PORT: 3058
     restart: unless-stopped
